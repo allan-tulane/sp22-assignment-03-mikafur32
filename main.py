@@ -45,7 +45,7 @@ def parens_match_iterative(mylist):
     """
 
     result = iterate(parens_update, '', mylist)
-    return len(result) == 0 #if 0, then no unmatched
+    return len(result) == 0  # if 0, then no unmatched
 
 
 def parens_update(current_output, next_input):
@@ -63,7 +63,8 @@ def parens_update(current_output, next_input):
     if len(current_output) == 0:
         return next_input
 
-    if current_output[-1] == '(' and next_input == ')':  # most recent in curroutput. [-1] = last element, first from back
+    if current_output[
+        -1] == '(' and next_input == ')':  # most recent in curroutput. [-1] = last element, first from back
         return current_output[:-1]
 
     elif not (current_output[-1] in '()'):
@@ -101,9 +102,11 @@ def parens_match_scan(mylist):
     False
     
     """
-    result = scan(plus, 0, mylist)
-    print(result)
-    if result[0][0] == -1 or result[0][len(result) - 1] == 1 or reduce(plus, 0, result)[1] != 0:
+    mappingResult = []
+    for paren in mylist:  # to get map
+        mappingResult.append(paren_map(paren))
+
+    if mappingResult[0] == -1 or mappingResult[len(mappingResult) - 1] == 1 or reduce(plus, 0, mappingResult) != 0:
         return False
     return True
 
@@ -140,6 +143,7 @@ def paren_map(x):
     >>>paren_map('a')
     0
     """
+
     if x == '(':
         return 1
     elif x == ')':
@@ -225,6 +229,3 @@ def test_parens_match_dc():
     assert parens_match_dc(['(', ')']) == True
     assert parens_match_dc(['(']) == False
     assert parens_match_dc([')']) == False
-
-
-print(parens_match_iterative(['(', '(', '(', ')', ')', ')']))
