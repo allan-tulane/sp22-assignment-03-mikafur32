@@ -48,7 +48,6 @@ Below, we'll solve this problem three different ways, using iterate, scan, and d
 
 **d. (8pts)** Assume that any `map`s are done in parallel, and that we use the efficient implementation of `scan` from class. What are the recurrences for the Work and Span of this solution? 
 
-**enter answer in `answers.md`**
 
 .  
 .  
